@@ -1,0 +1,44 @@
+.header {
+    background-color: #444444;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    height: 318px;
+    align-items: center;
+}
+
+.header h1 {
+    margin-left: 60px;
+    font-size: 64px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* adjust px as needed */
+img {
+    filter: brightness(0) invert(1);
+    /* turns black into white */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+}
+.left_section{
+    display:block;
+    background-color: #000000;
+    width: 405px;
+    height: 477px;
+
+}
+button {
+    background-color:#D9D9D9 ;
+    border-radius: 20PX;
+    width:327px;
+    height:58px;
+    position: relative;
+    bottom:-75px;
+    margin: 20px;s
+}
