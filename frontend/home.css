@@ -1,44 +1,398 @@
-.header {
-    background-color: #444444;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin: 0;
-    height: 318px;
-    align-items: center;
-}
-
-.header h1 {
-    margin-left: 60px;
-    font-size: 64px;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-/* adjust px as needed */
-img {
-    filter: brightness(0) invert(1);
-    /* turns black into white */
+/* --- Global Resets & Variables --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* This makes layout math much easier */
 }
 
 body {
-    margin: 0;
-    padding: 0;
-
+  background-color: #000;
+  font-family: Arial, sans-serif;
+  color: white;
+  /* We add padding here to ensure content never touches the screen edge */
+  padding: 20px; 
 }
-.left_section{
-    display:block;
-    background-color: #000000;
-    width: 405px;
-    height: 477px;
 
+/* --- App Wrapper & Main Layout --- */
+.app-wrapper {
+  max-width: 1400px; /* Sets a max width for the app on very large screens */
+  margin: 0 auto;   /* This is the key to centering the entire layout */
+  border: 1px solid #333; /* Optional: adds a nice border around the app */
+  overflow: hidden; /* Prevents anything from spilling out */
 }
+
+/* Header */
+.header {
+  background-color: #444;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centers the content horizontally */
+  padding: 20px;
+  gap: 30px; /* Adds space between the title and logo */
+}
+
+.header h1 {
+  font-size: 64px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* SVG Logo */ 
+.header img {
+  filter: brightness(0) invert(1); /* make logo white */
+  height: 120px; /* Reduced height to be more proportional */
+  width: auto;
+}
+
+/* Main Content Area (contains the two columns) */
+.body {
+  display: flex;
+}
+
+/* Left Section (Navigation) */
+.left_section {
+  background-color: #000;
+  width: 350px; /* A slightly smaller, fixed width for the sidebar */
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Buttons */
 button {
-    background-color:#D9D9D9 ;
-    border-radius: 20PX;
-    width:327px;
-    height:58px;
-    position: relative;
-    bottom:-75px;
-    margin: 20px;s
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 20px;
+  width: 100%; /* Make buttons fill the width of the sidebar */
+  max-width: 300px;
+  height: 58px;
+  font-weight: bold;
+  color: #333;
+  font-size: large;
+  margin-bottom: 25px; /* Spaced out a bit more */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Transition all properties for a smoother effect */
+}
+
+button:hover {
+  background-color: #4da6ff;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Right Section (Content Display) */
+.right_section {
+  flex: 1; /* This makes it take up all remaining horizontal space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #111;
+  padding: 20px;
+  min-height: 500px; /* Ensures it has a minimum height even when empty */
+}
+
+.right_section img {
+  max-width: 100%;
+  max-height: 450px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Footer */
+.footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center; /* Centered text is often cleaner in footers */
+  padding: 20px;
+  font-size: 14px;
+}
+
+.footer p {
+  margin: 5px 0;
+  font-size: large;
+}
+
+.footer a {
+  color: #4da6ff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* --- (Keep your task view styles below this line) --- */
+/* Your styles for .task-container, #new-task-form, etc. will go here */
+.task-container {
+    width: 90%;
+    max-width: 800px; /* Stop it from getting too wide on large screens */
+    color: #333; /* Dark text for readability on white background */
+    background-color: #fff; /* White background for the container */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.input-section h2, .task-list-section h2 {
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+#new-task-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+#new-task-input {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#add-task-btn {
+    width: auto; /* Override the global button width */
+    height: auto;
+    padding: 0.75rem 1.5rem;
+    background-color: #444;
+    color: white;
+    font-weight: normal;
+}
+
+#add-task-btn:hover {
+    background-color: #4da6ff;
+}
+
+#task-list {
+    list-style: none; /* Removes default bullet points */
+    padding: 0;
+}
+/* --- Styles for Individual Task Items --- */
+.task-item {
+  display: flex;
+  justify-content: space-between; /* Pushes text and actions to opposite ends */
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s;
+}
+
+/* Style for every other task item to create a "striped" look */
+.task-item:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+
+.task-text {
+  font-size: 1.1rem;
+}
+
+.task-actions button {
+  width: auto;
+  height: auto;
+  margin: 0 0 0 10px; /* Add space between buttons */
+  padding: 5px 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.task-actions button.delete-btn:hover {
+  background-color: #ffdddd; /* light red */
+  color: #c53030;
+  transform: scale(1.1);
+}
+
+.task-actions button.complete-btn:hover {
+  background-color: #d4edda; /* light green */
+  color: #155724;
+  transform: scale(1.1);
+}
+
+/* --- Plan Management Styles --- */
+#plan-title-input, #plan-description-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+
+#plan-description-input {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#add-plan-btn {
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1.5rem;
+  background-color: #444;
+  color: white;
+  font-weight: normal;
+}
+
+#add-plan-btn:hover {
+  background-color: #4da6ff;
+}
+
+.plan-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.plan-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.plan-title {
+  margin: 0;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.plan-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.plan-actions button {
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.plan-actions button:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.1);
+}
+
+.plan-description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.plan-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.plan-status {
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.plan-status.active {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+/* --- Completed Tasks Styles --- */
+.completed-stats {
+  background-color: #e8f5e8;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.completed-stats p {
+  margin: 0;
+  color: #155724;
+  font-size: 1.1rem;
+}
+
+.completed-task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f8f0;
+  border-left: 4px solid #28a745;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0 8px 8px 0;
+  transition: all 0.3s ease;
+}
+
+.completed-task-item:hover {
+  background-color: #e8f5e8;
+  transform: translateX(5px);
+}
+
+.completed-task-content {
+  flex: 1;
+}
+
+.completed-task-text {
+  display: block;
+  color: #333;
+  text-decoration: line-through;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.completed-task-meta {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.completed-task-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.completed-task-actions button {
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.restore-task-btn:hover {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  transform: scale(1.1);
+}
+
+.permanent-delete-btn:hover {
+  background-color: #f8d7da;
+  color: #721c24;
+  transform: scale(1.1);
 }

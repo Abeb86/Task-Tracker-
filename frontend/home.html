@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Task Tracker App</title>
-        <link rel="stylesheet" href="home.css">
-    </head>
-    <body>
-        <div class="header"> 
-            <h1>Task Tracker</h1>
-            <img style="color: white !important;" src="image.svg" alt="logo" width="172px" height="210">
-        </div>
-        <div class="body">
-            <div class="left_section">
-            <a href="add_task.html">Add Task</a>
-            <a href="due date.html">Due Date</a>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Tracker App</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
 
-            
-        <div class="right_section">
-                    
-            <div class="task_insert"></div>
-            <p id="enter_task">Enter Task</p>
-            </div>
-        </div>
-    </body>
-    </head>
+  <!-- This wrapper will help us center the whole app and manage its width -->
+  <div class="app-wrapper">
+
+    <!-- Use the <header> tag for the header section -->
+    <header class="header">
+      <h1>Task and Plan Tracker</h1>
+      <img src="image.svg" alt="logo" width="500px;">
+    </header>
+
+    <!-- Use the <main> tag for the primary content of the page -->
+    <main class="body">
+      <!-- The left section is navigation, so we use the <nav> tag -->
+      <nav class="left_section">
+        <button class="add_task">Add Tasks</button>
+        <button class="set_plan">Set Plans</button>
+        <button class="view_tasks-completed">View Completed Task</button>
+      </nav>
+
+      <!-- The right section is a generic content block, so <section> is perfect -->
+      <section class="right_section">
+        <img src="Gemini_Generated_Image_9cdfig9cdfig9cdf.png" alt="Task illustration">
+      </section>
+    </main>
+    <!-- Use the <footer> tag for the footer section -->
+    <footer class="footer">
+      <p> <img style="margin-right:6px; filter: brightness(0) invert(1)" src="email-1564-svgrepo-com.svg" width="18px" height="20px">  Email: abebayehuendale203@gmail.com</p>
+      <p><img style="margin-right:6px; filter: brightness(0) invert(1) " src="phone-svgrepo-com.svg" width="22px" height="22px">  +971-50810-3096</p>
+ 
+  </div> <!-- end of .app-wrapper -->
+
+  <script src="home.js"></script>
+
+</body>
 </html>
