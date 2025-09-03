@@ -21,7 +21,7 @@ A simple task management app built with HTML, CSS, and JavaScript. Create tasks,
 ##  Usage
 
 - **Add Tasks**: Click "Add Tasks" → Enter task → Click "Add"
-- **Complete Tasks**: Click ✔️ to mark as done
+- **Complete Tasks**: Click  to mark as done
 - **Set Plans**: Click "Set Plans" → Create your goals
 - **View Completed**: Click "View Completed Task" to see history
 
